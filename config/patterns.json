@@ -1,0 +1,44 @@
+{
+  "sensitive_data_patterns": [
+    {
+      "name": "API Keys",
+      "pattern": "(?i)(api[_-]?key|access[_-]?token|secret[_-]?key)\\s*[=:]\\s*[\"'][^\"']+[\"']",
+      "severity": "HIGH",
+      "description": "مفاتيح API مخزنة كنص واضح"
+    },
+    {
+      "name": "Passwords",
+      "pattern": "(?i)(password|passwd|pwd)\\s*[=:]\\s*[\"'][^\"']+[\"']",
+      "severity": "HIGH",
+      "description": "كلمات المرور مخزنة كنص واضح"
+    }
+  ],
+  "security_antipatterns": [
+    {
+      "name": "HTTP Usage",
+      "pattern": "http://",
+      "severity": "MEDIUM",
+      "description": "استخدام HTTP بدلاً من HTTPS"
+    },
+    {
+      "name": "Insecure WebView",
+      "pattern": "setJavaScriptEnabled\\(true\\)",
+      "severity": "HIGH",
+      "description": "WebView مع JavaScript مفعل بدون قيود"
+    }
+  ],
+  "vulnerability_signatures": [
+    {
+      "name": "SQL Injection",
+      "pattern": "(?i)(rawQuery|execSQL|Statement\\.execute).*?\\+.*?user.*?input",
+      "severity": "HIGH",
+      "description": "إمكانية حدوث حقن SQL"
+    },
+    {
+      "name": "XSS in WebView",
+      "pattern": "loadUrl\\(.*?\\+.*?user.*?input\\)",
+      "severity": "HIGH",
+      "description": "إمكانية حدوث XSS في WebView"
+    }
+  ]
+}
